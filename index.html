@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胖乖生活取token - 专业的积分查询与Token获取工具平台 | 解决胖乖生活问题</title>
+    <meta name="description" content="胖乖生活取token,某乖生活系统提供胖乖生活token获取、积分查询、胖乖解黑等一站式服务。帮助用户快速解决胖乖生活相关问题，提供高效便捷的解决方案。">
+    <meta name="keywords" content="胖乖生活,Token获取,积分查询,胖乖解黑,胖乖生活取token,胖乖生活积分查询,胖乖账号管理,胖乖积分,胖乖token">
+    <meta name="author" content="胖乖生活取token">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://calmmd.github.io/index.html">
+    <!-- Favicon设置 -->
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="shortcut icon" href="logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="某乖生活系统 - 专业的积分查询与Token获取工具平台">
+    <meta property="og:description" content="某乖生活系统提供胖乖生活token获取、积分查询、胖乖解黑等一站式服务。帮助用户快速解决胖乖生活相关问题，提供高效便捷的解决方案。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calmmd.github.io/index.html">
+    <meta property="og:image" content="https://calmmd.github.io/logo.png">
+    <meta property="og:site_name" content="某乖生活系统">
+    <meta property="og:locale" content="zh_CN">
+    <!-- Twitter 卡片 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="某乖生活系统 - 专业的积分查询与Token获取工具平台">
+    <meta name="twitter:description" content="某乖生活系统提供胖乖生活token获取、积分查询、胖乖解黑等一站式服务。帮助用户快速解决胖乖生活相关问题。">
+    <meta name="twitter:image" content="https://calmmd.github.io/logo.png">
+    <!-- 预加载字体和样式 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Logo圆形样式 */
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #fff;
+            flex-shrink: 0;
+        }
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        /* Logo容器布局优化 */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        /* 动态渲染的标题样式 */
+        .app-header h1 {
+            position: relative;
+            background: linear-gradient(90deg, #764ba2, #667eea, #764ba2);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            animation: gradientFlow 5s ease infinite;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        /* 为不支持渐变的浏览器提供备选方案 */
+        @supports not (background-clip: text) {
+            .app-header h1 {
+                background: none;
+                color: #764ba2;
+                -webkit-text-fill-color: initial;
+                animation: colorChange 5s ease infinite;
+            }
+            
+            @keyframes colorChange {
+                0% { color: #764ba2; }
+                50% { color: #667eea; }
+                100% { color: #764ba2; }
+            }
+        }
+        
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* 内置使用说明样式 */
+        .instructions-box {
+            background: linear-gradient(135deg, rgba(118, 75, 162, 0.1), rgba(102, 126, 234, 0.1));
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .instructions-box h3 {
+            font-size: 16px;
+            color: #764ba2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instructions-box h3 i {
+            margin-right: 8px;
+        }
+        
+        .instructions-box ol {
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+        
+        .instructions-box li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        .instructions-box .highlight {
+            font-weight: bold;
+            color: #764ba2;
+        }
+        
+        /* 页脚Logo样式 */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4568dc;
+            font-weight: 500;
+        }
+        
+        .footer-logo span {
+            /* 页脚标题不使用动态效果，保持原样式 */
+        }
+        
+        .footer-logo img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: contain;
+            background-color: #fff;
+            border: 1px solid #eaeaea;
+        }
+        
+        /* 背景水印 */
+        .bg-pattern::after {
+            content: "";
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                margin-right: 8px;
+            }
+            
+            .app-header h1 {
+                font-size: 20px;
+            }
+            
+            .footer-logo img {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .bg-pattern::after {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+    <!-- 结构化数据标记 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "某乖生活系统",
+      "description": "某乖生活系统提供胖乖生活token获取、积分查询、胖乖解黑等一站式服务。帮助用户快速解决胖乖生活相关问题，提供高效便捷的解决方案。",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "某乖生活系统团队",
+        "url": "https://pg.gptoai.ggff.net/"
+      },
+      "potentialAction": {
+        "@type": "UseAction",
+        "target": "https://pg.gptoai.ggff.net/index.html"
+      }
+    }
+    </script>
+    <!-- 网站导航结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://calmmd.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "获取Token",
+          "item": "https://calmmd.github.io/index.html#token-section"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "积分查询",
+          "item": "https://calmmd.github.io/index.html#integral-section"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "资源下载",
+          "item": "https://calmmd.github.io/index.html#download-section"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bg-animation" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-pattern"></div>
+    </div>
+    
+    <!-- 强制性高匿IP注册弹窗 -->
+    <div id="ipRegisterModal" class="modal" role="dialog" aria-labelledby="ipRegisterTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="ipRegisterTitle">重要提示</h2>
+                <div class="modal-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+        </div>
+            <div class="modal-body">
+                <p>请在使用本系统服务之前，先注册高匿IP，方便后续获取胖乖token以及积分获取。</p>
+                <p class="modal-note">高匿IP可以有效防止账号风控，提高获取成功率</p>
+    </div>
+            <div class="modal-footer">
+                <a href="https://www.ipzan.com/?pid=g587ksmm" target="_blank" id="ipRegisterBtn" class="btn btn-primary" rel="noopener">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> 前往注册高匿IP
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="app-container" itemscope itemtype="https://schema.org/WebApplication">
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <img src="logo.png" alt="胖乖生活系统logo">
+                </div>
+                <h1 itemprop="name">某乖生活系统</h1>
+            </div>
+            <p class="app-subtitle" itemprop="description">专业Token获取与积分管理平台</p>
+            <div class="visitor-counter">
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                <span>总访问量：<span id="visitorCount" itemprop="interactionCount">0</span></span>
+            </div>
+    </header>
+    
+        <!-- 服务导航区 -->
+        <nav class="service-nav" aria-label="主要服务导航">
+            <a href="#token-section" class="service-nav-item active" data-target="token-section">
+                <i class="fas fa-key" aria-hidden="true"></i>
+                <span>获取Token</span>
+            </a>
+            <a href="#integral-section" class="service-nav-item" data-target="integral-section">
+                <i class="fas fa-coins" aria-hidden="true"></i>
+                <span>积分查询</span>
+            </a>
+            <a href="#download-section" class="service-nav-item" data-target="download-section">
+                <i class="fas fa-download" aria-hidden="true"></i>
+                <span>资源下载</span>
+            </a>
+        </nav>
+        
+        <!-- 合作伙伴区域 -->
+        <section class="partners-container">
+            <h2 class="visually-hidden">合作伙伴</h2>
+            <div class="partners-wrapper">
+                <a href="https://www.baidu.com" target="_blank" rel="noopener" class="partner-card">
+                    <div class="partner-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
+                    <div class="partner-info">
+                        <h3>全网最大搜索网站</h3>
+                        <p>点击访问</p>
+                    </div>
+                </a>
+                <a href="http://h5.yezi66.net:90/invite/2014760" target="_blank" rel="noopener" class="partner-card">
+                    <div class="partner-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></div>
+                    <div class="partner-info">
+                        <h3>解黑平台注册</h3>
+                        <p>点击跳转</p>
+                    </div>
+                </a>
+                <a href="https://www.ipzan.com?pid=g587ksmm" target="_blank" rel="noopener" class="partner-card">
+                    <div class="partner-icon"><i class="fas fa-mask" aria-hidden="true"></i></div>
+                    <div class="partner-info">
+                        <h3>IP高匿站点推荐</h3>
+                        <p>点击跳转</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <main class="app-main">
+            <!-- Token获取部分 -->
+            <section id="token-section" class="content-section active" itemscope itemtype="https://schema.org/SoftwareApplication">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-key" aria-hidden="true"></i></div>
+                    <h2 itemprop="name">某乖生活取Token</h2>
+                </div>
+                
+                <div class="form-container">
+                    <p class="section-description" itemprop="description">通过本工具快速安全地获取胖乖生活Token，支持多端口获取，无需担心账号安全问题。</p>
+                    
+                    <!-- 使用说明 -->
+                    <div class="instructions-box">
+                        <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 使用说明</h3>
+                        <ol>
+                            <li>胖乖APP退出登录</li>
+                            <li>然后<span class="highlight">在手机上</span>发送验证码</li>
+                            <li>获取验证码以后<span class="highlight">把手机号、验证码</span>分别填到<span class="highlight">这里</span>，点击这里的登录按钮就可以了</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="phoneInput"><i class="fas fa-mobile-alt" aria-hidden="true"></i> 手机号:</label>
+                        <input type="text" id="phoneInput" name="phone" placeholder="请输入手机号" aria-required="true">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="verifyInput"><i class="fas fa-lock" aria-hidden="true"></i> 验证码:</label>
+                        <div class="code-input-group">
+                            <input type="text" id="verifyInput" name="verify" placeholder="请输入验证码" aria-required="true">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="scriptSelector"><i class="fas fa-server" aria-hidden="true"></i> 选择端口:</label>
+                        <select id="scriptSelector" onchange="loadScript()">
+                            <option value="app" selected>默认端口</option>
+                        </select>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button onclick="verifyCode()" class="btn btn-primary"><i class="fas fa-sign-in-alt" aria-hidden="true"></i> 登录</button>
+                        <button onclick="copy()" class="btn btn-secondary"><i class="fas fa-copy" aria-hidden="true"></i> 复制Token</button>
+                    </div>
+                    
+                    <div class="result-container">
+                        <div class="result-section">
+                            <div class="result-header">
+                                <i class="fas fa-key" aria-hidden="true"></i> Token信息:
+                            </div>
+                            <div id="responseDisplay" class="result-content"></div>
+                        </div>
+                        <div id="uploadStatus" class="status-message"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 积分查询部分 -->
+            <section id="integral-section" class="content-section" itemscope itemtype="https://schema.org/Service">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-coins" aria-hidden="true"></i></div>
+                    <h2 itemprop="name">积分查询系统</h2>
+                </div>
+                
+                <div class="form-container">
+                    <p class="section-description" itemprop="description">安全高效地查询您的胖乖生活账号积分情况，只需输入Token即可获取详细积分信息。</p>
+                    <div class="input-group">
+                        <label for="queryToken"><i class="fas fa-key" aria-hidden="true"></i> Token:</label>
+                        <input type="text" id="queryToken" placeholder="输入或粘贴Token" aria-required="true">
+                    </div>
+
+                    <div class="button-group">
+                        <button onclick="checkIntegral()" class="btn btn-primary"><i class="fas fa-search" aria-hidden="true"></i> 查询积分</button>
+                    </div>
+                    
+                    <div class="result-container">
+                        <div id="integralDisplay" class="integral-results"></div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- 资源下载部分 -->
+            <section id="download-section" class="content-section" itemscope itemtype="https://schema.org/SoftwareApplication">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-download" aria-hidden="true"></i></div>
+                    <h2 itemprop="name">资源包下载</h2>
+                </div>
+                
+                <div class="download-container">
+                    <div class="download-info">
+                        <h3>资源工具包</h3>
+                        <p itemprop="description">包含胖乖生活使用教程、常用脚本和工具程序，全面提升您的使用体验。</p>
+                        <div class="download-size">
+                            <i class="fas fa-file-archive" aria-hidden="true"></i>
+                            <span itemprop="fileSize">12.5 MB</span>
+                        </div>
+                    </div>
+                    
+                    <div class="download-buttons">
+                        <button id="downloadBtn" class="btn btn-primary">
+                            <i class="fas fa-download" aria-hidden="true"></i> 立即下载
+                        </button>
+                    </div>
+            
+                    <div class="screenshot-container">
+                        <h3><i class="fas fa-images" aria-hidden="true"></i> 资源包预览</h3>
+                        <div class="screenshot-gallery">
+                            <div class="screenshot">
+                                <img src="screenshot1.png" alt="胖乖生活资源工具包截图1" onerror="this.src='https://via.placeholder.com/300x180?text=胖乖生活资源预览1'" itemprop="screenshot">
+                            </div>
+                            <div class="screenshot">
+                                <img src="screenshot2.png" alt="胖乖生活资源工具包截图2" onerror="this.src='https://via.placeholder.com/300x180?text=胖乖生活资源预览2'" itemprop="screenshot">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="胖乖生活系统logo">
+                    <span>某乖生活系统</span>
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)" onclick="showUserAgreement()">用户使用协议</a>
+                    <a href="#token-section">Token获取</a>
+                    <a href="#integral-section">积分查询</a>
+                    <a href="#download-section">资源下载</a>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 某乖生活系统 - 提供Token获取、积分查询和解黑功能
+                </div>
+                <div class="footer-keywords" aria-hidden="true">
+                    <p class="hidden-seo-text">胖乖生活Token获取 胖乖生活积分查询 胖乖生活资源下载 胖乖token工具 胖乖积分系统 胖乖账号管理</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 用户协议弹窗 -->
+    <div id="agreementModal" class="modal" role="dialog" aria-labelledby="agreementTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="agreementTitle">用户使用协议</h2>
+                <div class="modal-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
+            </div>
+            <div class="modal-body agreement-content">
+                <h3><i class="fas fa-gavel" aria-hidden="true"></i> 1. 服务条款</h3>
+                <p>欢迎使用某乖生活系统。本协议是您与某乖生活系统之间关于使用本网站服务的协议。使用本网站即表示您同意本协议的全部条款。</p>
+                
+                <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 2. 服务说明</h3>
+                <p>某乖生活系统提供Token获取、积分查询和解黑功能。我们保留随时修改或中断服务的权利，且不需事先通知用户。</p>
+                
+                <h3><i class="fas fa-user-shield" aria-hidden="true"></i> 3. 用户隐私</h3>
+                <p>我们重视您的隐私保护。使用我们的服务时，您同意我们按照隐私政策收集和使用您的个人信息。我们会采取合理措施保护用户的个人信息安全。</p>
+                
+                <h3><i class="fas fa-balance-scale" aria-hidden="true"></i> 4. 用户行为规范</h3>
+                <p>用户在使用本服务时应遵守中华人民共和国相关法律法规，不得利用本服务从事违法违规行为，包括但不限于：</p>
+                <ul>
+                    <li>发布、传送、传播、储存违反国家法律法规的信息</li>
+                    <li>侵犯他人知识产权、商业秘密等合法权益的行为</li>
+                    <li>使用本服务进行任何可能对互联网正常运转造成不利影响的行为</li>
+                </ul>
+                
+                <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> 5. 免责声明</h3>
+                <p>用户明确同意其使用本服务所存在的风险将完全由其自己承担。本服务不承诺对用户的使用承担任何责任。</p>
+                
+                <h3><i class="fas fa-edit" aria-hidden="true"></i> 6. 协议修改</h3>
+                <p>我们保留随时修改本协议的权利，修改后的协议条款将在网站上公布，不再另行通知。如您继续使用本服务，则视为您接受修改后的协议。</p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeUserAgreement()" class="btn btn-primary">我已阅读并同意</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加图片预览模态框 -->
+    <div id="imagePreviewModal" class="modal image-preview-modal" role="dialog" aria-labelledby="imagePreviewTitle">
+        <div class="image-preview-container">
+            <span class="close-preview" aria-label="关闭预览">&times;</span>
+            <img id="previewImage" class="preview-content" alt="预览图片">
+            <div class="preview-caption" id="imagePreviewTitle"></div>
+        </div>
+    </div>
+
+    <!-- 添加额外的SEO内容但在视觉上隐藏 -->
+    <div class="seo-content" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">
+        <h2>关于胖乖生活系统</h2>
+        <p>某乖生活系统是专业的胖乖生活Token获取与积分查询平台，提供安全高效的胖乖Token获取服务，支持胖乖积分查询和账号解黑功能。我们的系统使用最新的技术确保您的胖乖生活账号安全，通过获取Token实现积分查询、账号管理等功能。</p>
+        
+        <h2>胖乖生活Token获取说明</h2>
+        <p>通过某乖生活系统，您可以轻松获取胖乖生活Token，只需输入手机号和验证码，系统将为您安全获取Token，支持多端口选择，确保获取成功率。</p>
+        
+        <h2>胖乖生活积分查询功能</h2>
+        <p>使用获取到的Token，您可以查询胖乖生活账号的积分情况，了解积分详情，帮助您更好地管理胖乖生活账号。</p>
+        
+        <h2>胖乖生活常见问题</h2>
+        <p>Q1: 什么是胖乖生活Token？</p>
+        <p>A1: Token是用于身份验证的令牌，获取Token后可以进行积分查询等操作。</p>
+        
+        <p>Q2: 如何安全获取胖乖生活Token？</p>
+        <p>A2: 通过某乖生活系统提供的安全通道，输入手机号和验证码即可获取。</p>
+        
+        <p>Q3: 为什么需要使用高匿IP？</p>
+        <p>A3: 高匿IP可以有效防止账号风控，提高获取成功率。</p>
+    </div>
+
+    <script src="https://unpkg.com/axios@1.6.2/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 动态创建favicon链接（如果页面中没有logo图片）
+        const faviconLink = document.querySelector('link[rel="icon"]');
+        if (!faviconLink) {
+            const link = document.createElement('link');
+            link.rel = 'icon';
+            link.href = 'logo.png';
+            link.type = 'image/png';
+            document.head.appendChild(link);
+        }
+        
+        // 设置文档标题（对SEO有帮助）
+        document.title = "某乖生活系统 - 专业的积分查询与Token获取工具平台 | 解决胖乖生活问题";
+        
+        // 填充访问计数器（模拟数据，对SEO有帮助）
+        document.getElementById('visitorCount').textContent = Math.floor(10000 + Math.random() * 5000);
+        
+        // 动态标题效果增强
+        const mainTitle = document.querySelector('.app-header h1');
+        if(mainTitle) {
+            // 添加微弱呼吸效果 - 性能优化版本
+            let animationFrame;
+            let time = 0;
+            
+            function breatheAnimation() {
+                time += 0.02;
+                // 使用正弦函数生成平滑的缩放效果
+                const scale = 1 + 0.01 * Math.sin(time);
+                
+                mainTitle.style.transform = `scale(${scale})`;
+                animationFrame = requestAnimationFrame(breatheAnimation);
+            }
+            
+            // 开始动画
+            breatheAnimation();
+            
+            // 页面不可见时暂停动画以节省资源
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    cancelAnimationFrame(animationFrame);
+                } else {
+                    breatheAnimation();
+                }
+            });
+        }
+        
+        // 重置访问状态，确保每次浏览器会话都显示高匿IP弹窗
+        if (sessionStorage.getItem('currentSession') !== 'active') {
+            // 新会话，重置所有状态
+            localStorage.removeItem('ipRegisterClicked');
+            sessionStorage.setItem('currentSession', 'active');
+        }
+        
+        // 监听高匿IP注册弹窗的按钮点击
+        document.getElementById('ipRegisterBtn').addEventListener('click', function() {
+            // 标记用户已点击注册按钮
+            localStorage.setItem('ipRegisterClicked', 'true');
+            
+            // 立即关闭高匿IP弹窗
+            document.getElementById('ipRegisterModal').style.display = 'none';
+            
+            // 显示用户协议弹窗而不是QQ群弹窗
+            document.getElementById('agreementModal').style.display = 'block';
+        });
+        
+        // 如果用户之前已点击过注册按钮并且是同一个浏览会话，直接显示用户协议弹窗
+        if (localStorage.getItem('ipRegisterClicked') === 'true') {
+            document.getElementById('ipRegisterModal').style.display = 'none';
+            document.getElementById('agreementModal').style.display = 'block';
+        }
+        
+        // 服务导航切换功能
+        const navItems = document.querySelectorAll('.service-nav-item');
+        const contentSections = document.querySelectorAll('.content-section');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.getAttribute('data-target');
+                
+                // 更新URL哈希（对SEO有帮助）
+                window.location.hash = target;
+                
+                // 移除所有激活状态
+                navItems.forEach(nav => nav.classList.remove('active'));
+                contentSections.forEach(section => section.classList.remove('active'));
+                
+                // 激活当前选中项
+                this.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // 检查URL哈希并激活相应的部分（对SEO有帮助）
+        if(window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            const targetSection = document.getElementById(hash);
+            const targetNav = document.querySelector(`.service-nav-item[data-target="${hash}"]`);
+            
+            if(targetSection && targetNav) {
+                contentSections.forEach(section => section.classList.remove('active'));
+                navItems.forEach(nav => nav.classList.remove('active'));
+                
+                targetSection.classList.add('active');
+                targetNav.classList.add('active');
+            }
+        }
+
+        // 图片放大预览功能
+        const screenshotImages = document.querySelectorAll('.screenshot img');
+        const imagePreviewModal = document.getElementById('imagePreviewModal');
+        const previewImage = document.getElementById('previewImage');
+        const previewCaption = document.querySelector('.preview-caption');
+        const closePreview = document.querySelector('.close-preview');
+
+        // 为每个截图添加点击事件
+        screenshotImages.forEach(img => {
+            img.style.cursor = 'zoom-in'; // 添加放大镜光标
+            img.addEventListener('click', function() {
+                previewImage.src = this.src;
+                previewImage.alt = this.alt;
+                previewCaption.textContent = this.alt;
+                imagePreviewModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            });
+        });
+
+        // 点击关闭按钮
+        closePreview.addEventListener('click', function() {
+            imagePreviewModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // 恢复背景滚动
+        });
+
+        // 点击模态框背景关闭
+        imagePreviewModal.addEventListener('click', function(event) {
+            if (event.target === imagePreviewModal) {
+                imagePreviewModal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // 恢复背景滚动
+            }
+        });
+    });
+    
+    // 显示用户协议弹窗
+    function showUserAgreement() {
+        document.getElementById('agreementModal').style.display = 'block';
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
+    }
+
+    // 关闭用户协议弹窗
+    function closeUserAgreement() {
+        document.getElementById('agreementModal').style.display = 'none';
+        document.body.style.overflow = 'auto'; // 恢复背景滚动
+    }
+
+    // 页面关闭或刷新时清除会话状态
+    window.addEventListener('beforeunload', function() {
+        sessionStorage.removeItem('currentSession');
+    });
+    </script>
+</body>
+</html>
