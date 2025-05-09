@@ -278,16 +278,38 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="ipRegisterTitle">重要提示</h2>
+                <span class="modal-close" id="ipRegisterCloseX">&times;</span>
                 <div class="modal-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-        </div>
+            </div>
             <div class="modal-body">
                 <p>请在使用本系统服务之前，先注册高匿IP，方便后续获取胖乖token以及积分获取。</p>
                 <p class="modal-note">高匿IP可以有效防止账号风控，提高获取成功率</p>
-    </div>
+                <p class="scroll-hint"><i class="fas fa-arrow-down"></i> 向下滚动查看更多</p>
+                
+                <div class="ip-sites-container">
+                    <div class="ip-site-option">
+                        <h3>选项1: IP高匿站</h3>
+                        <div class="ip-site-preview">
+                            <img src="https://www.ipzan.com/banner.jpg" alt="IP站预览" class="ip-preview-img">
+                        </div>
+                        <a href="https://www.ipzan.com/?pid=g587ksmm" target="_blank" class="btn btn-secondary ip-site-btn" rel="noopener">
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i> 前往注册
+                        </a>
+                    </div>
+                    
+                    <div class="ip-site-option">
+                        <h3>选项2: IP防封站</h3>
+                        <div class="ip-site-preview">
+                            <img src="https://www.juliangip.com/index/static/pc/img/kefu.png" alt="防封IP预览" class="ip-preview-img">
+                        </div>
+                        <a href="https://www.juliangip.com/user/reg?inviteCode=1039056" target="_blank" class="btn btn-secondary ip-site-btn" rel="noopener">
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i> 前往注册
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="modal-footer">
-                <a href="https://www.ipzan.com/?pid=g587ksmm" target="_blank" id="ipRegisterBtn" class="btn btn-primary" rel="noopener">
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> 前往注册高匿IP
-                </a>
+                <button id="ipRegisterCloseBtn" class="btn btn-primary">我已知晓</button>
             </div>
         </div>
     </div>
@@ -323,6 +345,13 @@
                     <div class="partner-icon"><i class="fas fa-mask" aria-hidden="true"></i></div>
                     <div class="partner-info">
                         <h3>IP高匿站点推荐</h3>
+                        <p>点击跳转</p>
+                    </div>
+                </a>
+                <a href="https://www.juliangip.com/user/reg?inviteCode=1039056" target="_blank" rel="noopener" class="partner-card">
+                    <div class="partner-icon"><i class="fas fa-mask" aria-hidden="true"></i></div>
+                    <div class="partner-info">
+                        <h3>防封IP站点推荐</h3>
                         <p>点击跳转</p>
                     </div>
                 </a>
@@ -385,6 +414,42 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- 用户须知（非弹窗）-->
+            <div id="userAgreementSection" class="user-agreement-section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
+                    <h2>用户使用协议</h2>
+                </div>
+                <div class="agreement-content">
+                    <h3><i class="fas fa-gavel" aria-hidden="true"></i> 1. 服务条款</h3>
+                    <p>欢迎使用某乖生活系统。本协议是您与某乖生活系统之间关于使用本网站服务的协议。使用本网站即表示您同意本协议的全部条款。</p>
+                    
+                    <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 2. 服务说明</h3>
+                    <p>某乖生活系统提供Token获取、积分查询和解黑功能。我们保留随时修改或中断服务的权利，且不需事先通知用户。</p>
+                    
+                    <h3><i class="fas fa-user-shield" aria-hidden="true"></i> 3. 用户隐私</h3>
+                    <p>我们重视您的隐私保护。使用我们的服务时，您同意我们按照隐私政策收集和使用您的个人信息。我们会采取合理措施保护用户的个人信息安全。</p>
+                    
+                    <h3><i class="fas fa-balance-scale" aria-hidden="true"></i> 4. 用户行为规范</h3>
+                    <p>用户在使用本服务时应遵守中华人民共和国相关法律法规，不得利用本服务从事违法违规行为，包括但不限于：</p>
+                    <ul>
+                        <li>发布、传送、传播、储存违反国家法律法规的信息</li>
+                        <li>侵犯他人知识产权、商业秘密等合法权益的行为</li>
+                        <li>使用本服务进行任何可能对互联网正常运转造成不利影响的行为</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> 5. 免责声明</h3>
+                    <p>用户明确同意其使用本服务所存在的风险将完全由其自己承担。本服务不承诺对用户的使用承担任何责任。</p>
+                    
+                    <h3><i class="fas fa-edit" aria-hidden="true"></i> 6. 协议修改</h3>
+                    <p>我们保留随时修改本协议的权利，修改后的协议条款将在网站上公布，不再另行通知。如您继续使用本服务，则视为您接受修改后的协议。</p>
+                    
+                    <div class="agreement-actions">
+                        <button id="agreementAcceptBtn" class="btn btn-primary"><i class="fas fa-check-circle" aria-hidden="true"></i> 我已知晓并同意</button>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <footer class="app-footer">
@@ -401,43 +466,6 @@
                 </div>
             </div>
         </footer>
-    </div>
-
-    <!-- 用户协议弹窗 -->
-    <div id="agreementModal" class="modal" role="dialog" aria-labelledby="agreementTitle">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="agreementTitle">用户使用协议</h2>
-                <div class="modal-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
-            </div>
-            <div class="modal-body agreement-content">
-                <h3><i class="fas fa-gavel" aria-hidden="true"></i> 1. 服务条款</h3>
-                <p>欢迎使用某乖生活系统。本协议是您与某乖生活系统之间关于使用本网站服务的协议。使用本网站即表示您同意本协议的全部条款。</p>
-                
-                <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 2. 服务说明</h3>
-                <p>某乖生活系统提供Token获取、积分查询和解黑功能。我们保留随时修改或中断服务的权利，且不需事先通知用户。</p>
-                
-                <h3><i class="fas fa-user-shield" aria-hidden="true"></i> 3. 用户隐私</h3>
-                <p>我们重视您的隐私保护。使用我们的服务时，您同意我们按照隐私政策收集和使用您的个人信息。我们会采取合理措施保护用户的个人信息安全。</p>
-                
-                <h3><i class="fas fa-balance-scale" aria-hidden="true"></i> 4. 用户行为规范</h3>
-                <p>用户在使用本服务时应遵守中华人民共和国相关法律法规，不得利用本服务从事违法违规行为，包括但不限于：</p>
-                <ul>
-                    <li>发布、传送、传播、储存违反国家法律法规的信息</li>
-                    <li>侵犯他人知识产权、商业秘密等合法权益的行为</li>
-                    <li>使用本服务进行任何可能对互联网正常运转造成不利影响的行为</li>
-                </ul>
-                
-                <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> 5. 免责声明</h3>
-                <p>用户明确同意其使用本服务所存在的风险将完全由其自己承担。本服务不承诺对用户的使用承担任何责任。</p>
-                
-                <h3><i class="fas fa-edit" aria-hidden="true"></i> 6. 协议修改</h3>
-                <p>我们保留随时修改本协议的权利，修改后的协议条款将在网站上公布，不再另行通知。如您继续使用本服务，则视为您接受修改后的协议。</p>
-            </div>
-            <div class="modal-footer">
-                <button onclick="closeUserAgreement()" class="btn btn-primary">我已阅读并同意</button>
-            </div>
-        </div>
     </div>
 
     <!-- 添加图片预览模态框 -->
@@ -529,22 +557,43 @@
             sessionStorage.setItem('currentSession', 'active');
         }
         
-        // 监听高匿IP注册弹窗的按钮点击
-        document.getElementById('ipRegisterBtn').addEventListener('click', function() {
-            // 标记用户已点击注册按钮
+        // 监听高匿IP注册弹窗的关闭按钮点击
+        document.getElementById('ipRegisterCloseBtn').addEventListener('click', function() {
+            // 标记用户已关闭弹窗
             localStorage.setItem('ipRegisterClicked', 'true');
             
             // 立即关闭高匿IP弹窗
             document.getElementById('ipRegisterModal').style.display = 'none';
-            
-            // 显示用户协议弹窗而不是QQ群弹窗
-            document.getElementById('agreementModal').style.display = 'block';
         });
         
-        // 如果用户之前已点击过注册按钮并且是同一个浏览会话，直接显示用户协议弹窗
+        // 监听高匿IP注册弹窗的X关闭按钮点击
+        document.getElementById('ipRegisterCloseX').addEventListener('click', function() {
+            // 标记用户已关闭弹窗
+            localStorage.setItem('ipRegisterClicked', 'true');
+            
+            // 立即关闭高匿IP弹窗
+            document.getElementById('ipRegisterModal').style.display = 'none';
+        });
+        
+        // 允许点击弹窗外部区域关闭弹窗 (可选)
+        document.getElementById('ipRegisterModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                localStorage.setItem('ipRegisterClicked', 'true');
+                this.style.display = 'none';
+            }
+        });
+        
+        // 如果用户之前已点击过注册按钮，不显示高匿IP弹窗
         if (localStorage.getItem('ipRegisterClicked') === 'true') {
             document.getElementById('ipRegisterModal').style.display = 'none';
-            document.getElementById('agreementModal').style.display = 'block';
+        }
+        
+        // 监听用户协议同意按钮点击
+        const agreementAcceptBtn = document.getElementById('agreementAcceptBtn');
+        if (agreementAcceptBtn) {
+            agreementAcceptBtn.addEventListener('click', function() {
+                closeUserAgreement();
+            });
         }
         
         // 服务导航切换功能
@@ -555,6 +604,9 @@
             item.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = this.getAttribute('data-target');
+                
+                // 关闭用户协议显示
+                document.getElementById('userAgreementSection').style.display = 'none';
                 
                 // 更新URL哈希（对SEO有帮助）
                 window.location.hash = target;
@@ -585,7 +637,7 @@
         }
 
         // 图片放大预览功能
-        const screenshotImages = document.querySelectorAll('.screenshot img');
+        const screenshotImages = document.querySelectorAll('.screenshot img, .ip-preview-img');
         const imagePreviewModal = document.getElementById('imagePreviewModal');
         const previewImage = document.getElementById('previewImage');
         const previewCaption = document.querySelector('.preview-caption');
@@ -618,16 +670,33 @@
         });
     });
     
-    // 显示用户协议弹窗
+    // 显示用户协议
     function showUserAgreement() {
-        document.getElementById('agreementModal').style.display = 'block';
-        document.body.style.overflow = 'hidden'; // 防止背景滚动
+        // 获取用户协议区域
+        const userAgreementSection = document.getElementById('userAgreementSection');
+        
+        // 隐藏当前内容区域
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // 显示用户协议部分
+        userAgreementSection.style.display = 'block';
     }
-
-    // 关闭用户协议弹窗
+    
+    // 关闭用户协议
     function closeUserAgreement() {
-        document.getElementById('agreementModal').style.display = 'none';
-        document.body.style.overflow = 'auto'; // 恢复背景滚动
+        // 隐藏用户协议
+        document.getElementById('userAgreementSection').style.display = 'none';
+        
+        // 显示token获取部分
+        document.getElementById('token-section').classList.add('active');
+        
+        // 滚动到页面顶部
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }
 
     // 页面关闭或刷新时清除会话状态
